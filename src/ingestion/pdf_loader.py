@@ -12,6 +12,7 @@ class DocumentPage:
 def clean_text(text: str) -> str:
     """PDF'ten çıkan metindeki bozuk boşlukları ve fazla satır sonlarını temizler."""
 
+    text = re.sub(r"\n?\d+\s+A practical guide to building agents\s*", "", text)
     text = re.sub(r"[\t]+"," ",text) # Satır içi fazla boşlukları tek boşluğa indirir.
     text = re.sub(r"\n{3,}", "\n\n", text) # 3 veya daha fazla art arda gelen satır sonunu 2'ye (paragraf sınırına) indirir.
     return text.strip()
